@@ -1,0 +1,13 @@
+{
+	"name":"hello",
+	"private":true,
+	"dependencies": {
+		"es5-shim":"4.0.3",
+		"json3":"3.3.2",
+		"html5shiv":"3.7.2",
+		"respond":"1.4.2",
+		"chosen":"~1.4.2"
+	},
+	"devDependencies":{}
+
+}
