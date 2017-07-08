@@ -1,52 +1,32 @@
-const path = require('path')
-const webpack = require('webpack')
+const webpack = require('webpack');
+const path = require('path');
 
 module.exports = {
-  devtool: 'eval',
-
   entry: [
-    './src/index.js'
+    './src/index'
   ],
-  historyApiFallback: {
-    index: '/public/'
-  },
-  resolve: {
-    extensions: ['', '.js', '.jsx']
-  },
-  output: {
-    path: path.join(__dirname, 'public'),
-    filename: 'bundle.js',
-    publicPath: '/public/'
-  },
-
-  plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin(),
-    new webpack.DefinePlugin({
-      'process.env': {
-        'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
-      }
-    })
-  ],
-
   module: {
     loaders: [
-      { test: /\.js?$/,
-        loader: 'babel',
-        include: path.join(__dirname, 'src')
-      },
-      { test: /\.scss?$/,
-        loader: 'style!css!sass',
-        include: path.join(__dirname, 'src', 'styles') },
-      {
-        test: /\.(jpg|png|svg)$/,
-        loader: 'url-loader',
-        options: {
-          limit: 25000
-        }
-      },
-      { test: /\.(ttf|eot|woff(2)?)(\?[a-z0-9]+)?$/,
-        loader: 'file'}
+      { test: /\.js?$/, loader: 'babel-loader', exclude: /node_modules/ },
+      { test: /\.s?css$/, loader: 'style-loader!css-loader!sass-loader' },
     ]
-  }
-}
+  },
+  resolve: {
+    extensions: ['.js','.scss']
+  },
+  output: {
+    path: path.join(__dirname, '/dist'),
+    publicPath: '/',
+    filename: 'bundle.js'
+  },
+  devtool: 'cheap-eval-source-map',
+  devServer: {
+    contentBase: './dist',
+    hot: true
+  },
+  plugins: [
+    new webpack.optimize.OccurrenceOrderPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoEmitOnErrorsPlugin()
+  ]
+};
