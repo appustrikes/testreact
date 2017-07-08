@@ -13,6 +13,7 @@ const server = new WebpackDevServer(webpack(config), {
   setup: function(app) {
     app.get('/instagram', (req, res) => {
       request.get('http://uqstaging.com/instagram/', (err, response, body) => {
+        console.log('ssssssss');
         res.send(body);
       });
     });
