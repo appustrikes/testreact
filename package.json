@@ -7,7 +7,8 @@
   "license": "MIT",
   "scripts": {
     "start": "node app.js",
-    "test": "mocha -w src/test/.setup.js src/test/*.spec.js"
+    "test": "mocha -w src/test/.setup.js src/test/*.spec.js",
+    "postinstall":"webpack -p"
   },
   "keywords": [
     "react",
