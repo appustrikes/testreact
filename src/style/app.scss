@@ -1,0 +1,56 @@
+// for generating random colors in hsl
+$s-min: 20;
+$s-max: 70;
+$l-min: 30;
+$l-max: 90;
+
+
+html {
+  overflow-y: scroll;
+}
+
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: 'Helvetica';
+}
+
+.cover {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.hero {
+  height: 100%;
+}
+
+// generate a random color for .block background in case the images are not loaded yet
+@for $i from 1 through 6 {
+  .block:nth-child(#{$i}) {
+    background-color: hsl(random(360),$s-min+random($s-max+-$s-min),$l-min+random($l-max+-$l-min));
+  }
+}
+
+.block {
+  height: 500px;
+}
+
+.text-center {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  color: black;
+
+  .caption {
+    font-size: 24px;
+    background-color: rgba(255,255,255,0.85);
+    border-radius: 10px;
+    padding: 5px 10px;
+  }
+}

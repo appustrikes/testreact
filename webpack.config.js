@@ -1,42 +1,67 @@
+const path = require('path')
+const webpack = require('webpack')
+
 module.exports = {
-  entry: "./src/index.js",
-  output: {
-    path: __dirname,
-    publicPath: "/",
-    filename: "bundle.js"
+  devtool: 'eval',
+
+  entry: [
+    './src/index.js'
+  ],
+  externals: {
+    'cheerio': 'window',
+    'react/lib/ExecutionEnvironment': true,
+    'react/lib/ReactContext': true,
   },
-  module:{
-    loaders:[
-      {
-        test: /\.jsx?$/,
-        exclude: /node_modules|bower_components/,
-        loader:"babel"
-      },
-      {
-        test: /\.less$/,
-        loader: "style!css!less"
-      },
-      {
-        test:/\.css$/,
-        loader:"style!css"
-      },
-      {
-        test:/\.html$/,
-        loader: "file?name=[name].[ext]"
-      },
-      {
-        test: /\.(woff|eot|ttf|svg|gif|png|ico|woff(2))(\?.*)?$/,
-        loader: 'url-loader?limit=1000000'
-      },
-      {
-        include: /\.json/, loaders:["json-loader"]
-      }
-    ]
+  historyApiFallback: {
+    index: '/public/'
   },
   resolve: {
-    extensions: ["", ".js", ".jsx"]
+    extensions: ['', '.js', '.jsx']
   },
-  devServer: {
-    contentBase: "./"
+  output: {
+    path: path.join(__dirname, 'public'),
+    filename: 'bundle.js',
+    publicPath: '/public/'
+  },
+
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin(),
+    new webpack.optimize.UglifyJsPlugin(),
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+      }
+    })
+  ],
+
+  module: {
+    loaders: [
+      { test: /\.js?$/,
+        loader: 'babel',
+        include: path.join(__dirname, 'src'),
+        query: {
+          "plugins": [["react-transform", {
+            "transforms": [{
+              "transform": "react-transform-hmr",
+              "imports": ["react"],
+              "locals": ["module"]
+            }]
+          }]]
+        }
+      },
+      { test: /\.scss?$/,
+        loader: 'style!css!sass',
+        include: path.join(__dirname, 'src', 'style') },
+      {
+        test: /\.(jpg|png|svg)$/,
+        loader: 'url-loader',
+        options: {
+          limit: 25000
+        }
+      },
+      { test: /\.(ttf|eot|woff(2)?)(\?[a-z0-9]+)?$/,
+        loader: 'file'}
+    ]
   }
-};
+}
