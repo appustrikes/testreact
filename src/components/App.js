@@ -57,8 +57,7 @@ export default class App extends React.Component {
   render () {
     return (
       <div className="app">
-        <Hero subtitle="I'm a subtitle" title="I'm a title"/>
-        {this.state.instagram.map(::this.renderBlock)}
+      deepak
       </div>
     );
   }
