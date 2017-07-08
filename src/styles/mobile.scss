@@ -1,0 +1,23 @@
+// Medium devices (tablets, 768px and up)
+@media screen and (max-width: 940px) {
+
+  .home {
+    .col-md-8 {
+      // min-height: 20rem;
+      position: absolute;
+
+      .captions {
+        background-color: black;
+        opacity: 1;
+        color: white;
+      }
+    }
+  }
+  .text {
+    width: 100% !important;
+  }
+
+  .row {
+    margin: auto;
+  }
+}

@@ -1,0 +1,15 @@
+import Baloon from '../assets/projects/drawings/baloon.jpg'
+import Bird from '../assets/projects/drawings/bird.jpg'
+import Eye from '../assets/projects/drawings/eye.jpg'
+import Fox from '../assets/projects/drawings/fox.jpg'
+import Jar from '../assets/projects/drawings/jar.jpg'
+import Rocket from '../assets/projects/drawings/rocket.jpg'
+import Smoke from '../assets/projects/drawings/smoke.jpg'
+import Space from '../assets/projects/drawings/space.jpg'
+import Tree from '../assets/projects/drawings/tree.jpg'
+import Unicone from '../assets/projects/drawings/unicone.jpg'
+import Whiskey from '../assets/projects/drawings/whiskey.jpg'
+import Witch from '../assets/projects/drawings/witch.jpg'
+import WorldMap from '../assets/projects/drawings/map.jpg'
+
+export const DRAWINGS =  [Smoke, Space, Whiskey, Jar, Tree, Bird, Eye, Fox, WorldMap, Rocket, Baloon, Unicone, Witch];

@@ -7,11 +7,6 @@ module.exports = {
   entry: [
     './src/index.js'
   ],
-  externals: {
-    'cheerio': 'window',
-    'react/lib/ExecutionEnvironment': true,
-    'react/lib/ReactContext': true,
-  },
   historyApiFallback: {
     index: '/public/'
   },
@@ -27,7 +22,6 @@ module.exports = {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
-    new webpack.optimize.UglifyJsPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
@@ -39,20 +33,11 @@ module.exports = {
     loaders: [
       { test: /\.js?$/,
         loader: 'babel',
-        include: path.join(__dirname, 'src'),
-        query: {
-          "plugins": [["react-transform", {
-            "transforms": [{
-              "transform": "react-transform-hmr",
-              "imports": ["react"],
-              "locals": ["module"]
-            }]
-          }]]
-        }
+        include: path.join(__dirname, 'src')
       },
       { test: /\.scss?$/,
         loader: 'style!css!sass',
-        include: path.join(__dirname, 'src', 'style') },
+        include: path.join(__dirname, 'src', 'styles') },
       {
         test: /\.(jpg|png|svg)$/,
         loader: 'url-loader',
