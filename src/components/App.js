@@ -6,8 +6,7 @@ export default class App extends React.Component {
       <div>
         
           <h1> VOTE FOR TREKHA</h1>
-<img src="../lo.jpg" height="500" width="500" / >
-
+		<div> <h2> Make Herga Great Again </h2> </div>
       </div>
     )
   }
