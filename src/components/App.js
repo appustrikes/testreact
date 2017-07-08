@@ -6,10 +6,11 @@ export default class App extends React.Component {
       <div>
         
           <h1> VOTE FOR TREKHA</h1>
-		<div> <h2> Make Herga Great Again </h2> </div>
-				<div> <h2>You will not find a better president in a whole milky way galaxy</h2> </div>
-				<div> <h2>Do not let the opportunity slip through your fingers , Please Vote me</h2> </div>
+		<div> <h2> MAKE HERGA GREAT AGAIN </h2> </div>
+				<div> <h2> "YOU WILL NOT FIND A BETTER PRESIDENT IN THE WHOLE MILKY WAY GALAXY"</h2> </div>
+                <div> <h2>"DO NOT LET THE OPPORTUNITY SLIP THROUGH YOUR FINGERS, PLEASE VOTE ME"</h2> </div>
 
+        <div><h1> "AB KI BAAR TREKHA SARKAAR"</h1></div>
       </div>
     )
   }
