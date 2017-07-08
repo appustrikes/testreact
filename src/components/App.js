@@ -11,6 +11,7 @@ export default class App extends React.Component {
                 <div> <h2>"DO NOT LET THE OPPORTUNITY SLIP THROUGH YOUR FINGERS, PLEASE VOTE ME"</h2> </div>
 
         <div><h1> "AB KI BAAR TREKHA SARKAAR"</h1></div>
+        <div> Please Vote and get free Bahubali tickets, including KFC coupons. Keep up to date on the latest sweepstakes and free gifts.</div> 
       </div>
     )
   }
