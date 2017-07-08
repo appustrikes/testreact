@@ -7,30 +7,14 @@ import VideoList from "./components/video_list";
 import VideoDetail from "./components/video_detail";
 const API_KEY = "AIzaSyAuQCVeNfKhtRk9KlChQPT1nO27DPO_5Ss";
 
-class App extends Component {
-  constructor(props) {
-    super(props);
 
-    this.state = {
-      videos: [],
-      selectedVideo: null
-    };
-
-    this.videoSearch("surfboards");
+var Home = React.createClass({
+  render: function() {
+    return <div> hello how are u </div>;
   }
+});
 
-  videoSearch(term) {
-    YTSearch({ key: API_KEY, term: term }, videos => {
-      this.setState({
-        videos: videos,
-        selectedVideo: videos[0]
-      });
-    });
-  }
 
-  render() {
-    return <span>hello</div>;
-  }
-}
 
-ReactDOM.render(<App />, document.querySelector(".container"));
+
+ReactDOM.render(<Home />, document.querySelector(".container"));
