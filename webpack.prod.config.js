@@ -1,32 +1,45 @@
-const webpack = require('webpack');
-const path = require('path');
+const path = require('path')
+const webpack = require('webpack')
 
 module.exports = {
+  devtool: 'source-map',
+
   entry: [
     './src/index'
   ],
-  module: {
-    loaders: [
-      { test: /\.js?$/, loader: 'babel-loader', exclude: /node_modules/ },
-      { test: /\.s?css$/, loader: 'style-loader!css-loader!sass-loader' },
-    ]
-  },
-  resolve: {
-    extensions: ['.js','.scss']
-  },
+
   output: {
-    path: path.join(__dirname, '/dist'),
-    publicPath: '/',
-    filename: 'bundle.js'
+    path: path.join(__dirname, 'public'),
+    filename: 'bundle.js',
+    publicPath: '/public/'
   },
-  devtool: 'cheap-eval-source-map',
-  devServer: {
-    contentBase: './dist',
-    hot: true
-  },
+
   plugins: [
-    new webpack.optimize.OccurrenceOrderPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoEmitOnErrorsPlugin()
-  ]
-};
+    new webpack.optimize.UglifyJsPlugin({
+      minimize: true,
+      compress: {
+        warnings: false
+      }
+    }),
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify('production')
+      }
+    })
+  ],
+
+  module: {
+    rules: [
+      { test: /\.js?$/,
+        loader: 'babel-loader',
+        include: path.join(__dirname, 'src') },
+      { test: /\.scss?$/,
+        loader: 'style-loader!css-loader!sass-loader',
+        include: path.join(__dirname, 'src', 'styles') },
+      { test: /\.png$/,
+        loader: 'file-loader' },
+      { test: /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
+        loader: 'file-loader'}
+    ]
+  }
+}
