@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "heroku+webpack.",
   "main": "./src/entry.js",
-  "homepage": "https://github.com/wallacyyy/webpack-heroku",
-  "author": "Anya Tran",
+  "homepage": "https://github.com/appustrikes/testreact.git",
+  "author": " aa",
   "license": "MIT",
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack --config ./webpack.prod.config.js --progress --colors",
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wallacyyy/webpack-heroku.git"
+    "url": "git+https://github.com/appustrikes/testreact.git"
   },
   "keywords": [
     "react",
