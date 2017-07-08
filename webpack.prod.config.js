@@ -1,20 +1,32 @@
-const config = require('./webpack.config.js');
 const webpack = require('webpack');
+const path = require('path');
 
-config.plugins.push(
-  new webpack.DefinePlugin({
-    "process.env": {
-      "NODE_ENV": JSON.stringify("production")
-    }
-  })
-);
-
-config.plugins.push(
-  new webpack.optimize.UglifyJsPlugin({
-    compress: {
-      warnings: false
-    }
-  })
-);
-
-module.exports = config;
+module.exports = {
+  entry: [
+    './src/index'
+  ],
+  module: {
+    loaders: [
+      { test: /\.js?$/, loader: 'babel-loader', exclude: /node_modules/ },
+      { test: /\.s?css$/, loader: 'style-loader!css-loader!sass-loader' },
+    ]
+  },
+  resolve: {
+    extensions: ['.js','.scss']
+  },
+  output: {
+    path: path.join(__dirname, '/dist'),
+    publicPath: '/',
+    filename: 'bundle.js'
+  },
+  devtool: 'cheap-eval-source-map',
+  devServer: {
+    contentBase: './dist',
+    hot: true
+  },
+  plugins: [
+    new webpack.optimize.OccurrenceOrderPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoEmitOnErrorsPlugin()
+  ]
+};
