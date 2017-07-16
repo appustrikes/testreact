@@ -30,7 +30,7 @@ console.log(c);
     return (
       <div>
         
-Browser params {c}</div>
+Browser params {c} {conn.toString()}</div>
     )
   }
 }
