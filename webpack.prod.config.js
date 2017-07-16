@@ -13,7 +13,11 @@ module.exports = {
     filename: 'bundle.js',
     publicPath: '/public/'
   },
-
+devServer: {
+            hot: true,
+            historyApiFallback: true,
+          headers: { 'Access-Control-Allow-Origin': '*' }
+        },
   plugins: [
     new webpack.optimize.UglifyJsPlugin({
       minimize: true,
