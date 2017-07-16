@@ -16,7 +16,5 @@ exports.index = function(req, res){
  * Prevents app.js from becoming huge!
  */
 exports.accounts = function(req, res){
-	rest.api(req).query("select id, name from account limit 10", function(data) {
-		res.render("accounts", { title: 'Accounts', data: data, user: req.session.identity } );
-	});
+	
 };
