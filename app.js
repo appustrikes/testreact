@@ -6,14 +6,15 @@ var express = require('express')
   , routes = require('./routes')
   , rest = require('./rest.js')
   , oauth = require('./oauth.js')
-  , url = require('url');
+  , url = require('url'),sys = require('util');
+;
 
 /**
  * Setup some environment variables (heroku) with defaults if not present
  */
 var port = process.env.PORT || 3001; // use heroku's dynamic port or 3001 if localhost
-var cid = process.env.CLIENT_ID || "YOUR-REMOTE-ACCESS-CONSUMER-KEY";
-var csecr = process.env.CLIENT_SECRET || "YOUR-REMOTE-ACCESS-CONSUMER-SECRET";
+var cid = process.env.CLIENT_ID || "3MVG9i1HRpGLXp.rxVcyCJ4PlHiRS6POuHnKpfvIJ9fHXYDsI9hOsl_tEh0MXhKOUr6p2QMKpeNrwqUdBs5PJ";
+var csecr = process.env.CLIENT_SECRET || "6500726240055158769";
 var lserv = process.env.LOGIN_SERVER || "https://login.salesforce.com";
 var redir = process.env.REDIRECT_URI || "http://localhost:" + port + "/token";
 

@@ -1,5 +1,6 @@
 var rest = require('restler');
 var oauth = require('./oauth.js');
+var sys = require('util');
 
 exports.request = function request(options) {
 	// TODO - API version

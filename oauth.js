@@ -1,4 +1,5 @@
 var rest = require('restler');
+var sys = require('util');
 
 exports.refresh = function refresh(options) {
     console.log('refresh');
